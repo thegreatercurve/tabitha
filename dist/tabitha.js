@@ -42,8 +42,10 @@
 		},
 
 		toggleActiveClass: function(index) {
-			removeClass(this.tabHeadings.querySelector('.active'), 'active').addClass(this.tabHeadings.children[index], 'active');
-			removeClass(this.tabPanels.querySelector('.active'), 'active').addClass(this.tabPanels.children[index], 'active');
+			removeClass(this.tabHeadings.querySelector('.active'), 'active');
+			removeClass(this.tabPanels.querySelector('.active'), 'active');
+			addClass(this.tabHeadings.children[index], 'active');
+			addClass(this.tabPanels.children[index], 'active');
 		}
 	};
 
@@ -52,7 +54,6 @@
 			node.classList.add(className);
 		else
 			node.className += ' ' + className;
-		return this;
 	};
 
 	function removeClass(node, className) {
@@ -60,7 +61,6 @@
 			node.classList.remove(className);
 		else
 			node.className = node.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-		return this;
 	};
 
 	function getActiveChildIndex(node) {

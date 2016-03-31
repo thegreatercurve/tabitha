@@ -47,8 +47,10 @@
 
 		// Adds or removes '.active' to tab headings and tab panels.
 		toggleActiveClass: function(index) {
-			removeClass(this.tabHeadings.querySelector('.active'), 'active').addClass(this.tabHeadings.children[index], 'active');
-			removeClass(this.tabPanels.querySelector('.active'), 'active').addClass(this.tabPanels.children[index], 'active');
+			removeClass(this.tabHeadings.querySelector('.active'), 'active');
+			removeClass(this.tabPanels.querySelector('.active'), 'active');
+			addClass(this.tabHeadings.children[index], 'active');
+			addClass(this.tabPanels.children[index], 'active');
 		}
 	};
 
@@ -58,7 +60,6 @@
 			node.classList.add(className);
 		else
 			node.className += ' ' + className;
-		return this;
 	};
 
 	// Helper function for removing CSS class from DOM node with back up for older browsers.
@@ -67,7 +68,6 @@
 			node.classList.remove(className);
 		else
 			node.className = node.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-		return this;
 	};
 
 	// Helper function for getting DOM node with
